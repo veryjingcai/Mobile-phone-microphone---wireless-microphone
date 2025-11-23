@@ -2,7 +2,7 @@
 
 一个基于 WebRTC 技术的单页 Web 应用，可以将您的手机（iOS/Android）变成 Windows 电脑的无线麦克风。
 
-无需安装手机 App，无需配置复杂的服务器，只需在浏览器中打开网页即可连接。
+无需安装手机 App，无需配置复杂的服务器，只需在浏览器中打开网页https://veryjingcai.github.io/WiFi_Voice/即可连接。
 
 ## ✨ 主要功能
 
