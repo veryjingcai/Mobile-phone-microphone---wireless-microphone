@@ -31,8 +31,11 @@
             transform: translateY(0);
         }
         textarea {
-            font-family: monospace;
-            font-size: 0.8rem;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 1.1rem; /* Significantly increased for mobile readability */
+            line-height: 1.4;
+            font-weight: 600;
+            color: #a5f3fc; /* Cyan-200 for better contrast */
         }
         
         /* Audio Visualizer Animation */
@@ -54,8 +57,14 @@
 </head>
 <body class="min-h-screen flex flex-col items-center justify-center p-4 selection:bg-blue-500 selection:text-white">
 
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 p-4 flex justify-center gap-4 z-50 bg-black/20 backdrop-blur-md border-b border-white/5">
+        <a href="index.html" class="text-blue-400 font-bold border-b-2 border-blue-400 pb-1 text-sm">🎙️ 扩展话筒</a>
+        <a href="camera.html" class="text-gray-400 hover:text-white transition text-sm font-medium">📷 扩展摄像头</a>
+    </nav>
+
     <!-- Main Container -->
-    <main class="glass-panel w-full max-w-2xl rounded-2xl p-6 md:p-10 relative overflow-hidden">
+    <main class="glass-panel w-full max-w-2xl rounded-2xl p-6 md:p-10 relative overflow-hidden mt-16">
         
         <!-- Header -->
         <header class="text-center mb-8">
@@ -105,15 +114,15 @@
                 <div id="sender-step-1">
                     <p class="text-sm text-gray-400 mb-2">1. 复制下方的 <span class="text-blue-300">连接代码 A</span> 发送给电脑：</p>
                     <div class="relative">
-                        <textarea id="sender-offer" readonly class="w-full bg-black/30 border border-white/10 rounded p-3 h-24 focus:outline-none focus:border-blue-500 text-xs resize-none" placeholder="正在生成代码...请稍候"></textarea>
-                        <button onclick="app.copyToClipboard('sender-offer')" class="absolute top-2 right-2 bg-white/10 hover:bg-white/20 text-xs px-2 py-1 rounded">复制</button>
+                        <textarea id="sender-offer" readonly class="w-full bg-black/30 border border-white/10 rounded p-3 h-24 focus:outline-none focus:border-blue-500 text-sm resize-none" placeholder="正在生成代码...请稍候" onclick="this.select()"></textarea>
+                        <button onclick="app.copyToClipboard('sender-offer')" class="absolute top-2 right-2 bg-white/20 hover:bg-white/30 text-xs px-3 py-1.5 rounded font-bold backdrop-blur-sm">复制</button>
                     </div>
                 </div>
 
                 <div id="sender-step-2" class="opacity-50 pointer-events-none transition-opacity">
                     <p class="text-sm text-gray-400 mb-2">3. 将电脑生成的 <span class="text-green-300">连接代码 B</span> 粘贴到这里：</p>
-                    <textarea id="sender-answer-input" class="w-full bg-black/30 border border-white/10 rounded p-3 h-24 focus:outline-none focus:border-blue-500 text-xs resize-none" placeholder="在此粘贴电脑的代码..."></textarea>
-                    <button onclick="app.finalizeSenderConnection()" class="mt-3 btn-primary w-full py-3 rounded-lg font-medium">连接电脑</button>
+                    <textarea id="sender-answer-input" class="w-full bg-black/30 border border-white/10 rounded p-3 h-24 focus:outline-none focus:border-blue-500 text-sm resize-none" placeholder="在此粘贴电脑的代码..."></textarea>
+                    <button onclick="app.finalizeSenderConnection()" class="mt-3 btn-primary w-full py-3 rounded-lg font-medium shadow-lg shadow-blue-500/30">连接电脑</button>
                 </div>
             </div>
         </div>
@@ -130,15 +139,15 @@
             <div class="space-y-4">
                 <div id="receiver-step-1">
                     <p class="text-sm text-gray-400 mb-2">2. 将手机的 <span class="text-blue-300">连接代码 A</span> 粘贴到这里：</p>
-                    <textarea id="receiver-offer-input" class="w-full bg-black/30 border border-white/10 rounded p-3 h-24 focus:outline-none focus:border-blue-500 text-xs resize-none" placeholder="在此粘贴手机的代码..."></textarea>
-                    <button onclick="app.createReceiverAnswer()" class="mt-2 btn-primary w-full py-2 rounded-lg font-medium text-sm">生成代码 B</button>
+                    <textarea id="receiver-offer-input" class="w-full bg-black/30 border border-white/10 rounded p-3 h-24 focus:outline-none focus:border-blue-500 text-sm resize-none" placeholder="在此粘贴手机的代码..."></textarea>
+                    <button onclick="app.createReceiverAnswer()" class="mt-2 btn-primary w-full py-2 rounded-lg font-medium text-sm shadow-lg shadow-blue-500/20">生成代码 B</button>
                 </div>
 
                 <div id="receiver-step-2" class="hidden">
                     <p class="text-sm text-gray-400 mb-2">3. 复制下方的 <span class="text-green-300">连接代码 B</span> 发回给手机：</p>
                     <div class="relative">
-                        <textarea id="receiver-answer" readonly class="w-full bg-black/30 border border-white/10 rounded p-3 h-24 focus:outline-none focus:border-blue-500 text-xs resize-none"></textarea>
-                        <button onclick="app.copyToClipboard('receiver-answer')" class="absolute top-2 right-2 bg-white/10 hover:bg-white/20 text-xs px-2 py-1 rounded">复制</button>
+                        <textarea id="receiver-answer" readonly class="w-full bg-black/30 border border-white/10 rounded p-3 h-24 focus:outline-none focus:border-blue-500 text-sm resize-none" onclick="this.select()"></textarea>
+                        <button onclick="app.copyToClipboard('receiver-answer')" class="absolute top-2 right-2 bg-white/20 hover:bg-white/30 text-xs px-3 py-1.5 rounded font-bold backdrop-blur-sm">复制</button>
                     </div>
                     <div class="mt-4 text-center text-emerald-400 animate-pulse text-sm">
                         等待手机确认连接...
@@ -215,6 +224,28 @@
             show(id) { document.getElementById(id).classList.remove('hidden'); }
             hide(id) { document.getElementById(id).classList.add('hidden'); }
             
+            // Prevent screen from sleeping (Wake Lock API)
+            async requestWakeLock() {
+                try {
+                    if ('wakeLock' in navigator) {
+                        this.wakeLock = await navigator.wakeLock.request('screen');
+                        console.log('Screen Wake Lock active');
+                        
+                        // Re-acquire lock if page becomes visible again (e.g. user switched tabs)
+                        document.addEventListener('visibilitychange', async () => {
+                            if (this.wakeLock !== null && document.visibilityState === 'visible') {
+                                try {
+                                    this.wakeLock = await navigator.wakeLock.request('screen');
+                                    console.log('Screen Wake Lock re-acquired');
+                                } catch(e) { console.log('Re-acquire lock failed', e); }
+                            }
+                        });
+                    }
+                } catch (err) {
+                    console.log('Wake Lock error:', err);
+                }
+            }
+
             async copyToClipboard(elementId) {
                 const el = document.getElementById(elementId);
                 el.select();
@@ -296,8 +327,9 @@
                         video: false 
                     });
 
-                    // 2. Start Visualizer
+                    // 2. Start Visualizer & Wake Lock
                     this.initVisualizer('sender-visualizer', this.localStream);
+                    this.requestWakeLock();
 
                     // 3. Create Peer Connection
                     this.peerConnection = new RTCPeerConnection(this.rtcConfig);
