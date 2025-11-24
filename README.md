@@ -2,7 +2,7 @@
 
 一个基于 WebRTC 技术的单页 Web 应用，可以将您的手机（iOS/Android）变成 Windows 电脑的无线麦克风。
 
-无需安装手机 App，无需配置复杂的服务器，只需在浏览器中打开网页 https://veryjingcai.github.io/Mobile-phone-microphone---wireless-microphone/ 即可连接。
+无需安装手机 App，无需配置复杂的服务器，只需在浏览器中打开网页即可连接。
 
 ## ✨ 主要功能
 
@@ -70,10 +70,22 @@ A: 为了实现“无服务器”架构。通常 WebRTC 需要一个后台信令
 **Q: 有回音怎么办？**
 A: 如果您没有使用耳机，且没有使用 VB-Cable，电脑发出的声音会被手机麦克风再次收录，产生啸叫。建议电脑端佩戴耳机，或者按上述教程配置 VB-Audio Cable。
 
+## 📷 新功能：WiFi 摄像头
+
+现已支持将手机摄像头作为电脑摄像头使用。
+
+1.  在网页顶部导航栏切换到 **"扩展摄像头"**。
+2.  连接步骤与麦克风模式相同。
+3.  **如何作为系统摄像头使用**：
+    *   电脑端接收画面后，点击全屏。
+    *   使用 **OBS Studio** 抓取该浏览器窗口。
+    *   在 OBS 中开启 **"启动虚拟摄像机 (Start Virtual Camera)"**。
+    *   在 Zoom/Teams 中选择 "OBS Virtual Camera" 即可。
+
 ## 🛠️ 技术栈
 
 *   **HTML5 & JavaScript (ES6)**
-*   **WebRTC**: 用于音频流传输 (RTCPeerConnection)。
+*   **WebRTC**: 用于音视频流传输 (RTCPeerConnection)。
 *   **Tailwind CSS**: 用于 UI 样式。
 *   **Web Audio API**: 用于音频可视化波形。
 
